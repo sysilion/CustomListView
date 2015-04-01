@@ -1,6 +1,8 @@
 package tk.bizu.customlistview;
 
 import java.util.ArrayList;
+
+import android.R.color;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,6 +54,12 @@ public class CustomAdapter extends BaseAdapter {
 		TextView describe = (TextView)convertView.findViewById(R.id.txtContent);
 		ImageView image1 = (ImageView)convertView.findViewById(R.id.imgIcon1);
 		ImageView image2 = (ImageView)convertView.findViewById(R.id.imgIcon2);
+		
+		if (position%2 == 0) {
+			convertView.setBackgroundColor(color.holo_blue_bright);
+		} else {
+			convertView.setBackgroundColor(color.holo_orange_light);
+		}
 		
 		CustomDTO dto = list.get(position);
 		title.setText(dto.getTitle());
