@@ -7,6 +7,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -54,18 +55,23 @@ public class CustomAdapter extends BaseAdapter {
 		TextView describe = (TextView)convertView.findViewById(R.id.txtContent);
 		ImageView image1 = (ImageView)convertView.findViewById(R.id.imgIcon1);
 		ImageView image2 = (ImageView)convertView.findViewById(R.id.imgIcon2);
-		
-		if (position%2 == 0) {
-			convertView.setBackgroundColor(color.holo_blue_bright);
-		} else {
-			convertView.setBackgroundColor(color.holo_orange_light);
-		}
-		
+
 		CustomDTO dto = list.get(position);
 		title.setText(dto.getTitle());
 		describe.setText(dto.getDescribe());
+		
 		image1.setImageResource(dto.getImage());;
 		image2.setImageResource(dto.getImage());;
+		
+		if (position%2 == 0) {
+			convertView.setBackgroundResource(R.drawable.p1);
+			convertView.setAlpha(0.8f);
+			title.setTextColor(0xffffffff);
+			describe.setTextColor(0xffffffff);
+		} else {
+			convertView.setBackgroundResource(R.drawable.p2);
+		}
+		
 		return convertView;
 	}
 
